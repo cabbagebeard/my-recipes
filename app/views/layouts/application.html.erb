@@ -11,11 +11,12 @@
   <%= render 'layouts/navigation'%>
   
   <div class="container">
+    
     <%= yield %>
-    <div class="footer">
-      <p>&copy; MyRecipes 2016</p>
-    </div>
-  </div>
+    
+    <%= render 'layouts/footer' %>
+    
+  </div><!--/container-->
 
 </body>
 </html>
