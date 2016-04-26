@@ -8,12 +8,11 @@
     <div class="col-md-2">
       
       <section class="chef_info center">
-        <%= gravatar_for recipe.chef, size: 100 %>
+        <%= link_to gravatar_for(recipe.chef, size: 110), chef_path(recipe.chef) %>
         <h5>Chef name: <%= recipe.chef.chefname %></h5>
       </section>
       
     </div>
-    
     <div class="col-lg-6 well">
       <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
       <p><%= recipe.summary %></p>
@@ -42,7 +41,6 @@
     <div class="col-md-4">
       <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
     </div>
-    
   </div>
   <hr />
 <% end %>
