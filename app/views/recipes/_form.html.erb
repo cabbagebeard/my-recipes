@@ -11,15 +11,37 @@
       
       <%= f.label :description %>
       <%= f.text_area :description, rows: 10 %>
-      
-      <span class="picture">
-        <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
-      </span>
-      
-      <%= f.submit(@recipe.new_record? ? 'Create Recipe' : 'Edit', class: "btn btn-success") %>
-      <% end %>
+    </div>
   </div>
-</div>
+      
+      <div class="row">
+       <div class="well col-md-4 col-md-offset-2">
+         <strong>Styles:</strong>
+          <%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |cb| %>
+            <% cb.label(class: "checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+          <% end %>
+          <br><br>
+        </div>
+        <div class="well col-md-4"> 
+          <strong>Ingredients:</strong>
+          <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cbi| %>
+            <% cbi.label(class: "checkbox") {cbi.check_box(class: "checkbox") + cbi.text} %>
+          <% end %>
+          <br><br>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="well col-md-8 col-md-offset-2">
+          <span class="picture">
+            <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
+          </span>
+          
+          <%= f.submit(@recipe.new_record? ? 'Create Recipe' : 'Edit', class: "btn btn-success") %>
+          <% end %>
+        </div>
+      </div>
+
 
 <script type="text/javascript">
   $('#recipe_picture').bind('change', function() {
